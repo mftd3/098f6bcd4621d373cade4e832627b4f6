@@ -4,7 +4,11 @@
 </script>
 
 <div class={message.from}>
-  <img src={message.file} alt="Image" />
+  <video src={message.file} controls>
+    Sorry, your browser doesn't support embedded videos, but don't worry, you
+    can <a href="videofile.ogg">download it</a>
+    and watch it with your favorite video player!
+  </video>
 
   <Date {message} />
 </div>
@@ -21,7 +25,7 @@
     border-radius: 14px;
   }
 
-  img {
+  video {
     max-width: 100%;
   }
 </style>

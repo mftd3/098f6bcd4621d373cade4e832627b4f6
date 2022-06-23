@@ -114,6 +114,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     flex-basis: 25%;
+    cursor: pointer;
   }
 
   .header-avatar {

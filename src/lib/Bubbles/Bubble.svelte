@@ -1,21 +1,37 @@
 <script>
+  import Audio from "./Audio.svelte";
+  import Text from "./Text.svelte";
+  import Image from "./Image.svelte";
+  import Video from "./Video.svelte";
+
   export let message = {};
+
+  const types = {
+    audio: Audio,
+    text: Text,
+    image: Image,
+    video: Video,
+  };
+
+  $: component = types[message.type];
 </script>
 
 <div class="bubble {message.from}">
-  {message.text}
+  {#if component}
+    <svelte:component this={component} {message} />
+  {/if}
 </div>
 
 <style>
   .bubble {
     background: #fff;
     max-width: 86%;
-    padding: 6px 10px;
     border-radius: 9px;
     margin-bottom: 7px;
     line-height: 1.18em;
     position: relative;
     filter: drop-shadow(0px 0px 0.5px #c6c6c6);
+    padding: 1px;
   }
 
   .bubble.user {
@@ -35,6 +51,7 @@
     left: 0;
     background-size: cover;
     transform: translate(-36%, -100%);
+    z-index: -1;
   }
 
   .bubble.user:before {

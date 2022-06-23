@@ -1,4 +1,6 @@
 <script>
+  import API from "./mock";
+
   import { Bubbles } from "./lib/Bubbles";
   import {
     WriteBar,
@@ -8,36 +10,38 @@
   } from "./lib/Footer";
   import Frame from "./lib/Frame.svelte";
   import Header from "./lib/Header.svelte";
+  import AttachModal from "./modal/AttachModal.svelte";
+
+  let modal = false;
+
+  function toggle() {
+    modal = !modal;
+  }
 </script>
 
 <Frame>
   <div class="telegram">
     <div class="inner">
       <Header />
-      <Bubbles />
+      <main>
+        <Bubbles messages={API.messages} />
+      </main>
       <footer>
-        <WriteBar />
+        <WriteBar onAttachClick={toggle} />
         <FooterButtonGroup>
-          <FooterButtonRow>
-            <FooterButton>слишком длинный текст</FooterButton>
-            <FooterButton>13</FooterButton>
-            <FooterButton>13</FooterButton>
-            <FooterButton>14</FooterButton>
-          </FooterButtonRow>
-          <FooterButton>1</FooterButton>
-          <FooterButton />
-          <FooterButton>3</FooterButton>
-          <FooterButton>4</FooterButton>
-          <FooterButton>5</FooterButton>
-          <FooterButton>6</FooterButton>
-          <FooterButton>7</FooterButton>
-          <FooterButton>8</FooterButton>
-          <FooterButton>9</FooterButton>
-          <FooterButton>10</FooterButton>
-          <FooterButton>11</FooterButton>
-          <FooterButton>12</FooterButton>
+          {#each API.reply_markup.keyboard as row}
+            <FooterButtonRow>
+              {#each row as button}
+                <FooterButton>{button.text}</FooterButton>
+              {/each}
+            </FooterButtonRow>
+          {/each}
         </FooterButtonGroup>
       </footer>
+
+      {#if modal}
+        <AttachModal />
+      {/if}
     </div>
   </div>
 </Frame>
@@ -74,6 +78,10 @@
     right: 0;
     bottom: 0;
     z-index: 1;
+  }
+  main {
+    overflow-y: auto;
+    max-height: 1010px;
   }
   footer {
     position: absolute;

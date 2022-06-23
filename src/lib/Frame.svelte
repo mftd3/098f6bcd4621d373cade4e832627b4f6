@@ -71,7 +71,7 @@
     left: 0;
     position: absolute;
     width: 100%;
-    z-index: 9;
+    z-index: 0;
   }
 
   .device-iphone-x .device-stripe::after {

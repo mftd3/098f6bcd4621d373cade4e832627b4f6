@@ -1,24 +1,38 @@
 <script>
   export let large = false;
   export let message = "";
+  export let onAttachClick = null;
 
+  export let focused = false;
   $: canSend = message.length > 0;
 </script>
 
 <div class="wrapper" class:large>
   <div class="inner">
     <div class="action">
-      <button class="menu">menu</button>
+      <button class="menu">
+        <span class="icon">1</span>
+        {#if !focused}
+          <span class="icon">menu</span>
+        {/if}
+      </button>
     </div>
-    <div class="action">12</div>
+    <button class="action" on:click={onAttachClick}>attach</button>
     <div class="action large">
-      <input type="text" placeholder="Message" bind:value={message} />
+      <input
+        type="text"
+        placeholder="Message"
+        bind:value={message}
+        on:focus={() => (focused = true)}
+        on:blur={() => (focused = false)}
+      />
     </div>
-    <div class="action">3</div>
     {#if canSend}
       <div class="action">
         <button class="menu">send</button>
       </div>
+    {:else}
+      <div class="action">3</div>
     {/if}
   </div>
 </div>
@@ -26,7 +40,7 @@
 <style>
   .wrapper {
     border-top: 0.5px solid #b2b2b2;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
   }
   .wrapper.large {
     height: 79px;
