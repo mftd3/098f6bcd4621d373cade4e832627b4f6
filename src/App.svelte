@@ -1,19 +1,41 @@
 <script>
+  import { Bubbles } from "./lib/Bubbles";
+  import {
+    WriteBar,
+    FooterButton,
+    FooterButtonGroup,
+    FooterButtonRow,
+  } from "./lib/Footer";
   import Frame from "./lib/Frame.svelte";
   import Header from "./lib/Header.svelte";
-  import { WriteBar, FooterButton, FooterButtonGroup } from "./lib/Footer";
 </script>
 
 <Frame>
   <div class="telegram">
     <div class="inner">
       <Header />
-      <div class="body">2</div>
+      <Bubbles />
       <footer>
         <WriteBar />
         <FooterButtonGroup>
-          <FooterButton>Запустити форму</FooterButton>
-          <FooterButton>🏠 Головне меню</FooterButton>
+          <FooterButtonRow>
+            <FooterButton>слишком длинный текст</FooterButton>
+            <FooterButton>13</FooterButton>
+            <FooterButton>13</FooterButton>
+            <FooterButton>14</FooterButton>
+          </FooterButtonRow>
+          <FooterButton>1</FooterButton>
+          <FooterButton />
+          <FooterButton>3</FooterButton>
+          <FooterButton>4</FooterButton>
+          <FooterButton>5</FooterButton>
+          <FooterButton>6</FooterButton>
+          <FooterButton>7</FooterButton>
+          <FooterButton>8</FooterButton>
+          <FooterButton>9</FooterButton>
+          <FooterButton>10</FooterButton>
+          <FooterButton>11</FooterButton>
+          <FooterButton>12</FooterButton>
         </FooterButtonGroup>
       </footer>
     </div>

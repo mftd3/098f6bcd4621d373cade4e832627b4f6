@@ -22,7 +22,7 @@
   .avatar span {
     color: #fff;
     font-size: 1.1em;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
   }
 </style>

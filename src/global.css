@@ -3,6 +3,10 @@
   vertical-align: top;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 html,
 body,
 input,
@@ -12,4 +16,11 @@ textarea {
   line-height: 1.15;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+button,
+input,
+textarea {
+  outline: 0;
+  border: 0;
 }

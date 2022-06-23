@@ -21,8 +21,10 @@
       testgeratest_bot
       <div class="header-subtitle">bot</div>
     </div>
+    <div class="header-avatar">
+      <Avatar {letter} />
+    </div>
   </div>
-  <Avatar {letter} />
 </div>
 
 <style>
@@ -34,6 +36,7 @@
     position: relative;
     z-index: 1;
     padding: 3px 8px;
+    border-bottom: 1px solid #c8c7cb;
   }
 
   .header-system {
@@ -45,15 +48,11 @@
     padding: 10px;
   }
 
-  .header-back {
-    background-image: url("/assets/back.png");
-  }
-
   .battery {
     height: 11px;
     width: 22px;
     border-radius: 3px;
-    border: 1px solid #838383;
+    border: 1px solid #8e908c;
     position: relative;
     padding: 1px;
   }
@@ -63,7 +62,7 @@
     display: flex;
     height: 4px;
     width: 1.5px;
-    background: #747474;
+    background: #767774;
     position: absolute;
     right: -3px;
     top: calc((9px - 4px) / 2);
@@ -81,9 +80,45 @@
   .clock {
     font-weight: 600;
     font-size: 1.1em;
+    flex-basis: 16%;
+    text-align: center;
   }
 
   .header-app {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    flex-basis: 50%;
+  }
+
+  .header-subtitle {
+    font-weight: 400;
+    font-size: 0.8em;
+    color: #787878;
+  }
+
+  .header-back {
+    color: #3478f6;
+    font-size: 1.25em;
+    line-height: 24px;
+    height: 24px;
+    padding-left: 20px;
+    background-image: url("../assets/back.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-basis: 25%;
+  }
+
+  .header-avatar {
+    flex-basis: 25%;
+    display: flex;
+    justify-content: right;
   }
 </style>
