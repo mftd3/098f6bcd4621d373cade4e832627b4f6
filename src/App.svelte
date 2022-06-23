@@ -1,7 +1,7 @@
 <script>
   import Frame from "./lib/Frame.svelte";
   import Header from "./lib/Header.svelte";
-  import WriteBar from "./lib/WriteBar.svelte";
+  import { WriteBar, FooterButton, FooterButtonGroup } from "./lib/Footer";
 </script>
 
 <Frame>
@@ -10,7 +10,11 @@
       <Header />
       <div class="body">2</div>
       <footer>
-        <WriteBar large />
+        <WriteBar />
+        <FooterButtonGroup>
+          <FooterButton>Запустити форму</FooterButton>
+          <FooterButton>🏠 Головне меню</FooterButton>
+        </FooterButtonGroup>
       </footer>
     </div>
   </div>
