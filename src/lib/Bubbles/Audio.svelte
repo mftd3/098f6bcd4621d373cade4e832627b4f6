@@ -71,13 +71,16 @@
     return `${minutes}:${seconds}`;
   }
 
-  function getOpacity(time, index) {
+  function getOpacity(time, index, duration) {
+    if ( time === 0 ) {
+        return "0.3";
+    }
+
     let size = duration < 5 ? 15 : 30;
+    let globalPecent = time*100/duration;
+    let samplePercent = index*100/size;
 
-    let test = (100 * index) / size;
-
-    console.log(test);
-    if (time < 1) {
+    if (globalPecent < samplePercent) {
       return "0.3";
     } else {
       return "1";
@@ -120,7 +123,7 @@
           <div
             class="sample"
             style:height="{sample}px"
-            style:opacity={getOpacity(time, index)}
+            style:opacity={getOpacity(time, index, duration)}
           />
         {/each}
       </div>
@@ -161,6 +164,7 @@
     border-radius: 2px;
     margin-right: 2px;
     opacity: 0.3;
+    min-height: 2px;
   }
   .progress {
     font-size: 9px;
