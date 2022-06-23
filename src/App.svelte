@@ -1,13 +1,58 @@
-<div class="telegram">
-  <div class="header">1</div>
-  <div class="body">2</div>
-  <div class="footer">3</div>
-</div>
+<script>
+  import Frame from "./lib/Frame.svelte";
+  import Header from "./lib/Header.svelte";
+  import WriteBar from "./lib/WriteBar.svelte";
+</script>
+
+<Frame>
+  <div class="telegram">
+    <div class="inner">
+      <Header />
+      <div class="body">2</div>
+      <footer>
+        <WriteBar large />
+      </footer>
+    </div>
+  </div>
+</Frame>
 
 <style>
   .telegram {
+    position: relative;
     width: 375px;
     height: 812px;
-    border: 1px solid red;
+  }
+  .telegram::before,
+  .telegram::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .telegram::before {
+    background-image: url("assets/bg-color.png");
+    background-repeat: repeat;
+  }
+  .telegram::after {
+    background-image: url("assets/bg-pattern.png");
+  }
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 </style>
