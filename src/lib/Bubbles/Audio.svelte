@@ -17,7 +17,6 @@
   const audioContext = new AudioContext();
 
   function handleMousedown(e) {
-    console.log(audio);
     lastMouseDown = new Date();
   }
 
@@ -28,7 +27,6 @@
     }
   }
 
-  console.log(audio);
   const drawAudio = (url) => {
     return fetch(url)
       .then((response) => response.arrayBuffer())
@@ -40,8 +38,6 @@
     const rawData = audioBuffer.getChannelData(0); // We only need to work with one channel of data
     const samples = audioBuffer.duration < 5 ? 15 : 30; // Number of samples we want to have in our final data set
     const blockSize = Math.floor(rawData.length / samples); // the number of samples in each subdivision
-
-    console.log(blockSize);
 
     const filteredData = [];
     for (let i = 0; i < samples; i++) {
@@ -76,7 +72,11 @@
   }
 
   function getOpacity(time, index) {
-    console.log(time);
+    let size = duration < 5 ? 15 : 30;
+
+    let test = (100 * index) / size;
+
+    console.log(test);
     if (time < 1) {
       return "0.3";
     } else {

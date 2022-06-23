@@ -6,7 +6,7 @@
 
 <section>
   {#if header}
-    <p>{header}</p>
+    <p class="header">{header}</p>
   {/if}
   <div class:spaced><slot /></div>
   {#if footer}
@@ -21,5 +21,8 @@
   .spaced {
     margin-right: 16px;
     margin-left: 16px;
+  }
+  .header {
+    text-transform: uppercase;
   }
 </style>
